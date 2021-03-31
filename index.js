@@ -5,7 +5,7 @@ const admin = require('firebase-admin');
 const MongoClient = require('mongodb').MongoClient;
 require('dotenv').config()
 
-const uri =  `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.tmexp.mongodb.net/Burj-Al-Arab?retryWrites=true&w=majority`;
+const uri =  `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.tmexp.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 const port = 5000;
 
 const app = express();
@@ -67,4 +67,4 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.listen(port)
+app.listen(process.env.PORT || port)
